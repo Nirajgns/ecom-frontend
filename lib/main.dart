@@ -1,3 +1,5 @@
+import 'package:ecom_app/core/routes.dart';
+import 'package:ecom_app/presentation/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -10,13 +12,9 @@ class EcomerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Ecommerce App",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Ecommerce App"),
-        ),
-      ),
+    return const MaterialApp(
+      onGenerateRoute: Routes.onGenerateRoute,
+      initialRoute: LoginScreen.routeName,
     );
   }
 }
