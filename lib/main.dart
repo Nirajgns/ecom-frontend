@@ -1,4 +1,5 @@
 import 'package:ecom_app/core/routes.dart';
+import 'package:ecom_app/core/ui.dart';
 import 'package:ecom_app/presentation/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,8 @@ class EcomerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: Themes.defaultTheme,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Routes.onGenerateRoute,
       initialRoute: LoginScreen.routeName,
