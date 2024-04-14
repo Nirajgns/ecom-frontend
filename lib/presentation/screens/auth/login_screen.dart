@@ -1,4 +1,8 @@
-import 'package:flutter/cupertino.dart';
+import 'package:ecom_app/core/ui.dart';
+import 'package:ecom_app/presentation/widgets/gap_widget.dart';
+import 'package:ecom_app/presentation/widgets/link_button.dart';
+import 'package:ecom_app/presentation/widgets/primary_button.dart';
+import 'package:ecom_app/presentation/widgets/primary_textfield.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -26,46 +30,41 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView(children: [
-            const Text(
-              "Log In",
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            TextFormField(
+            Text("Log In", style: TextStyles.heading2),
+            GapWidget(),
+            PrimaryTextField(
+              labelText: "Email Address",
               controller: emailController,
-              decoration: const InputDecoration(
-                hintText: "Enter your email...",
-                label: Text("Email"),
-              ),
+              hintText: "Enter your Email...",
             ),
-            const SizedBox(
-              height: 16,
-            ),
-            TextFormField(
-              obscureText: true,
+            GapWidget(),
+            PrimaryTextField(
+              labelText: "Password",
               controller: passwordController,
-              decoration: const InputDecoration(
-                hintText: "Enter your password...",
-                label: Text("Password"),
-              ),
+              hintText: "Enter your Password...",
+              obscureText: true,
             ),
-            const SizedBox(
-              height: 16,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                LinkButton(
+                  text: "Forgot password?",
+                  onPressed: () {},
+                ),
+              ],
             ),
-            CupertinoButton(
-              color: Colors.blue,
-              onPressed: () => {},
-              child: const Text("Login"),
+            GapWidget(),
+            PrimaryButton(
+              text: "Log In",
+              onPressed: () {},
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Don't have an account?"),
-                TextButton(
-                  onPressed: () => {},
-                  child: const Text("Sign up..."),
+                LinkButton(
+                  text: "Sign Up",
+                  onPressed: () {},
                 ),
               ],
             ),
