@@ -11,18 +11,19 @@ class UserModel {
   String? createdOn;
   String? updatedOn;
 
-  UserModel(
-      {this.sId,
-      this.fullname,
-      this.email,
-      this.password,
-      this.phoneNumber,
-      this.city,
-      this.state,
-      this.profileProgress,
-      this.id,
-      this.createdOn,
-      this.updatedOn});
+  UserModel({
+    this.sId,
+    this.fullname,
+    this.email,
+    this.password,
+    this.phoneNumber,
+    this.city,
+    this.state,
+    this.profileProgress,
+    this.id,
+    this.createdOn,
+    this.updatedOn,
+  });
 
   UserModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];

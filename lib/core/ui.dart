@@ -14,9 +14,14 @@ class Themes {
     appBarTheme: AppBarTheme(
       elevation: 0,
       backgroundColor: AppColors.scaffoldlight,
-      iconTheme: IconThemeData(color: AppColors.text),
+      iconTheme: IconThemeData(
+        color: AppColors.text,
+      ),
       titleTextStyle: TextStyle(
-          color: AppColors.text, fontSize: 24, fontWeight: FontWeight.w700),
+        color: AppColors.text,
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+      ),
     ),
     colorScheme: ColorScheme.light(
       primary: AppColors.accent,

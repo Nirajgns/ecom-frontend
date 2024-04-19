@@ -1,6 +1,8 @@
 import 'package:ecom_app/data/model/user/user_model.dart';
 
-abstract class UserState {}
+abstract class UserState {
+  String get message => "";
+}
 
 class UserInitialState extends UserState {}
 
