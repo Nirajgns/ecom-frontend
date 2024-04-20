@@ -6,7 +6,7 @@ import 'package:ecom_app/logic/cubits/user_cubit/user_cubit.dart';
 import 'package:ecom_app/presentation/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+ 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();

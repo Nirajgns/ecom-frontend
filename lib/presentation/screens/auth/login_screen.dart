@@ -1,5 +1,6 @@
 import 'package:ecom_app/core/ui.dart';
 import 'package:ecom_app/presentation/screens/auth/providers/login_provider.dart';
+import 'package:ecom_app/presentation/screens/auth/signup_screen.dart';
 import 'package:ecom_app/presentation/widgets/gap_widget.dart';
 import 'package:ecom_app/presentation/widgets/link_button.dart';
 import 'package:ecom_app/presentation/widgets/primary_button.dart';
@@ -59,17 +60,16 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const GapWidget(),
               PrimaryTextField(
-                labelText: "Password",
-                hintText: "Enter your Password...",
-                obscureText: true,
-                controller: provider.passwordController,
-                validator:(value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Password is required!";
-                  }
-                  return null;
-                  }
-              ),
+                  labelText: "Password",
+                  hintText: "Enter your Password...",
+                  obscureText: true,
+                  controller: provider.passwordController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Password is required!";
+                    }
+                    return null;
+                  }),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -91,7 +91,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text("Don't have an account?"),
                   LinkButton(
                     text: "Sign Up",
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, SignupScreen.routeName);
+                    },
                   ),
                 ],
               ),
