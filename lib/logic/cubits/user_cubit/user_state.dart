@@ -16,6 +16,7 @@ class UserLoggedInState extends UserState {
 class UserLoggedOutState extends UserState {}
 
 class UserErrorState extends UserState {
+  @override
   final String message;
 
   UserErrorState(this.message);

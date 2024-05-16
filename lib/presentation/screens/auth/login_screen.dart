@@ -31,7 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
       listener: (context, state) {
         if (state is UserLoggedInState) {
           Navigator.popUntil(context, (route) => route.isFirst);
-          // Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, HomeScreen.routeName, (route) => false);
         }
       },
       child: Scaffold(
