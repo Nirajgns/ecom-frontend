@@ -40,19 +40,19 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    data['_id'] = this.sId;
-    data['fullname'] = this.fullname;
-    data['email'] = this.email;
-    data['password'] = this.password;
-    data['phoneNumber'] = this.phoneNumber;
-    data['city'] = this.city;
-    data['state'] = this.state;
-    data['profileProgress'] = this.profileProgress;
-    data['id'] = this.id;
-    data['createdOn'] = this.createdOn;
-    data['updatedOn'] = this.updatedOn;
+    data['_id'] = sId;
+    data['fullname'] = fullname;
+    data['email'] = email;
+    data['password'] = password;
+    data['phoneNumber'] = phoneNumber;
+    data['city'] = city;
+    data['state'] = state;
+    data['profileProgress'] = profileProgress;
+    data['id'] = id;
+    data['createdOn'] = createdOn;
+    data['updatedOn'] = updatedOn;
     return data;
   }
 }

@@ -5,9 +5,23 @@ import 'package:ecom_app/logic/services/preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserCubit extends Cubit<UserState> {
-  UserCubit() : super(UserInitialState());
+  UserCubit() : super(UserInitialState()) {
+    _initialize();
+  }
 
   final UserRepository _userRepository = UserRepository();
+
+  void _initialize() async {
+    final userDetails = await Preferences.fetchUserDetails();
+    String? email = userDetails["email"];
+    String? password = userDetails["password"];
+
+    if (email == null || password == null) {
+      emit(UserLoggedOutState());
+    } else {
+      signIn(email: email, password: password);
+    }
+  }
 
   void _emitUserLoggedinState({
     required UserModel userModel,
@@ -18,7 +32,7 @@ class UserCubit extends Cubit<UserState> {
     emit(UserLoggedInState(userModel));
   }
 
-  void signin({required String email, required String password}) async {
+  void signIn({required String email, required String password}) async {
     emit(UserLoadingState());
     try {
       UserModel userModel =

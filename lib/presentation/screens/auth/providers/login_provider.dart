@@ -44,7 +44,7 @@ class LoginProvider with ChangeNotifier {
     String password = passwordController.text.trim();
 
     BlocProvider.of<UserCubit>(context)
-        .signin(email: email, password: password);
+        .signIn(email: email, password: password);
   }
 
   @override
