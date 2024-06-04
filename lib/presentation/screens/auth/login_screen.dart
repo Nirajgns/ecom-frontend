@@ -51,8 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   size: -10,
                 ),
                 (provider.error != "")
-                    ? Text(provider.error,
-                        style: const TextStyle(color: Colors.red))
+                    ? Text(
+                        provider.error,
+                        style: const TextStyle(color: Colors.red),
+                      )
                     : const SizedBox(),
                 const GapWidget(size: 5),
                 PrimaryTextField(
