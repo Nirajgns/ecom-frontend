@@ -3,7 +3,7 @@ import 'package:ecom_app/logic/cubits/user_cubit/user_cubit.dart';
 import 'package:ecom_app/logic/cubits/user_cubit/user_state.dart';
 import 'package:ecom_app/presentation/screens/auth/providers/login_provider.dart';
 import 'package:ecom_app/presentation/screens/auth/signup_screen.dart';
-import 'package:ecom_app/presentation/screens/home/home_screen.dart';
+import 'package:ecom_app/presentation/screens/splash/splash_screen.dart';
 import 'package:ecom_app/presentation/widgets/gap_widget.dart';
 import 'package:ecom_app/presentation/widgets/link_button.dart';
 import 'package:ecom_app/presentation/widgets/primary_button.dart';
@@ -30,9 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<UserCubit, UserState>(
       listener: (context, state) {
         if (state is UserLoggedInState) {
-          Navigator.popUntil(context, (route) => route.isFirst);
           Navigator.pushNamedAndRemoveUntil(
-              context, HomeScreen.routeName, (route) => false);
+              context, SplashScreen.routeName, (route) => false);
         }
       },
       child: Scaffold(

@@ -29,6 +29,7 @@ class ApiResponse {
   bool success;
   dynamic data;
   String? message;
+
   ApiResponse({required this.success, this.data, this.message});
 
   factory ApiResponse.fromResponse(Response response) {

@@ -56,4 +56,9 @@ class UserCubit extends Cubit<UserState> {
       emit(UserErrorState(ex.toString()));
     }
   }
+
+  void signOut() {
+    Preferences.clear();
+    emit(UserLoggedOutState());
+  }
 }
