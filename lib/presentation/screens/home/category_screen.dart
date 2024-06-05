@@ -10,6 +10,16 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.green);
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return ListTile(
+          onTap: () {},
+          leading: const Icon(Icons.category),
+          title: const Text('Category title'),
+          trailing: const Icon(Icons.keyboard_arrow_right),
+        );
+      },
+      itemCount: 5,
+    );
   }
 }
