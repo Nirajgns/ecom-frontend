@@ -5,7 +5,7 @@ import 'package:ecom_app/data/model/category/category_model.dart';
 class CategoryRepository {
   final _api = Api();
 
-  Future<List<CategoryModel>> fetchAllCategory() async {
+  Future<List<CategoryModel>> fetchAllCategories() async {
     try {
       Response response = await _api.sendRequest.get("/category");
       ApiResponse apiResponse = ApiResponse.fromResponse(response);

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:ecom_app/core/routes.dart';
 import 'package:ecom_app/core/ui.dart';
+import 'package:ecom_app/logic/cubits/caregory_cubit/category_cubit.dart';
 import 'package:ecom_app/logic/cubits/user_cubit/user_cubit.dart';
 import 'package:ecom_app/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,8 @@ class EcomerceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => UserCubit(),
-        )
+        BlocProvider(create: (context) => UserCubit()),
+        BlocProvider(create: (context) => CategoryCubit())
       ],
       child: MaterialApp(
         theme: Themes.defaultTheme,
