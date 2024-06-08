@@ -20,22 +20,23 @@ class LoginProvider with ChangeNotifier {
   StreamSubscription? _userSubscription;
 
   void _listenToUserCubit() {
-    _userSubscription =
-        BlocProvider.of<UserCubit>(context).stream.listen((userState) {
-      if (UserState is UserLoadingState) {
-        isLoading = true;
-        error = "";
-        notifyListeners();
-      } else if (userState is UserErrorState) {
-        isLoading = false;
-        error = userState.message;
-        notifyListeners();
-      } else {
-        isLoading = false;
-        error = "";
-        notifyListeners();
-      }
-    });
+    _userSubscription = BlocProvider.of<UserCubit>(context).stream.listen(
+      (userState) {
+        if (UserState is UserLoadingState) {
+          isLoading = true;
+          error = "";
+          notifyListeners();
+        } else if (userState is UserErrorState) {
+          isLoading = false;
+          error = userState.message;
+          notifyListeners();
+        } else {
+          isLoading = false;
+          error = "";
+          notifyListeners();
+        }
+      },
+    );
   }
 
   void logIn() async {

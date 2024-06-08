@@ -21,8 +21,12 @@ class EcomerceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => UserCubit()),
-        BlocProvider(create: (context) => CategoryCubit())
+        BlocProvider(
+          create: (context) => UserCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CategoryCubit(),
+        )
       ],
       child: MaterialApp(
         theme: Themes.defaultTheme,

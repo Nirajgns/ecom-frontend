@@ -20,9 +20,11 @@ class Routes {
 
       case SignupScreen.routeName:
         return CupertinoPageRoute(
-            builder: (context) => ChangeNotifierProvider(
-                create: (context) => SignupProvider(context),
-                child: const SignupScreen()));
+          builder: (context) => ChangeNotifierProvider(
+            create: (context) => SignupProvider(context),
+            child: const SignupScreen(),
+          ),
+        );
 
       case HomeScreen.routeName:
         return CupertinoPageRoute(builder: (context) => const HomeScreen());
