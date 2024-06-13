@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecom_app/core/ui.dart';
+import 'package:ecom_app/logic/cubits/product_cubit/product_cubit.dart';
+import 'package:ecom_app/logic/cubits/product_cubit/product_state.dart';
 import 'package:ecom_app/presentation/widgets/gap_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserFeedScreen extends StatefulWidget {
   const UserFeedScreen({super.key});
@@ -14,32 +17,50 @@ class UserFeedScreen extends StatefulWidget {
 class _UserFeedScreenState extends State<UserFeedScreen> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return Row(
-          children: [
-            CachedNetworkImage(
-              width: MediaQuery.of(context).size.width / 3,
-              imageUrl:
-                  "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone15prohero-202309_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1693086369818",
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Product title",
-                    style:
-                        TextStyles.body1.copyWith(fontWeight: FontWeight.bold)),
-                Text("Description",
-                    style:
-                        TextStyles.body2.copyWith(color: AppColors.textLight)),
-                const GapWidget(),
-                Text("Nrs. 99999", style: TextStyles.heading3)
-              ],
-            )
-          ],
-        );
-      },
-    );
+    return BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
+      return ListView.builder(
+        itemCount: state.products.length,
+        itemBuilder: (context, index) {
+          final product = state.products[index];
+          if (state is ProductLoadedState && state.products.isEmpty) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is ProductErrorState && state.products.isEmpty) {
+            return Center(child: Text(state.message));
+          }
+          return Row(
+            children: [
+              CachedNetworkImage(
+                width: MediaQuery.of(context).size.width / 3,
+                imageUrl: "${product.images?[0]}",
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${product.title}",
+                      style: TextStyles.body1
+                          .copyWith(fontWeight: FontWeight.bold),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      "${product.description},",
+                      style:
+                          TextStyles.body2.copyWith(color: AppColors.textLight),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const GapWidget(),
+                    Text("${product.price}", style: TextStyles.heading3)
+                  ],
+                ),
+              )
+            ],
+          );
+        },
+      );
+    });
   }
 }

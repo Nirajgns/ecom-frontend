@@ -16,6 +16,7 @@ class CategoryCubit extends Cubit<CategoryState> {
     try {
       List<CategoryModel> categories =
           await _categoryRepository.fetchAllCategories();
+
       emit(CategoryLoadedstate(categories));
     } catch (ex) {
       emit(CategoryErrorstate(ex.toString(), state.categories));
