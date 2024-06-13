@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecom_app/core/ui.dart';
 import 'package:ecom_app/logic/cubits/product_cubit/product_cubit.dart';
 import 'package:ecom_app/logic/cubits/product_cubit/product_state.dart';
+import 'package:ecom_app/logic/services/formatter.dart';
 import 'package:ecom_app/presentation/widgets/gap_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,7 +53,8 @@ class _UserFeedScreenState extends State<UserFeedScreen> {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const GapWidget(),
-                    Text("${product.price}", style: TextStyles.heading3)
+                    Text("Rs. ${Formatter.formatPrice(product.price!)}",
+                        style: TextStyles.heading3)
                   ],
                 ),
               )
