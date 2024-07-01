@@ -13,7 +13,7 @@ class ProductRepository {
       if (!apiResponse.success) {
         throw apiResponse.message.toString();
       }
-      //convert raw data to userModel
+      //conver raw data to userModel
       return (apiResponse.data as List<dynamic>)
           .map((e) => ProductModel.fromJson(e))
           .toList();
