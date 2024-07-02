@@ -13,7 +13,7 @@ class CategoryRepository {
       if (!apiResponse.success) {
         throw apiResponse.message.toString();
       }
-      //conver raw data to userModel
+      //convert raw data to userModel
       return (apiResponse.data as List<dynamic>)
           .map((e) => CategoryModel.fromJson(e))
           .toList();

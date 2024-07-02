@@ -35,9 +35,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               },
             ),
           ),
-          const GapWidget(
-            size: 10,
-          ),
+          const GapWidget(size: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
@@ -47,13 +45,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     style: TextStyles.heading3),
                 Text(Formatter.formatPrice(widget.productModel.price!),
                     style: TextStyles.heading2),
-                const GapWidget(
-                  size: 10,
-                ),
+                const GapWidget(size: 10),
                 PrimaryButton(onPressed: () {}, text: "Add To Cart"),
-                const GapWidget(
-                  size: 10,
-                ),
+                const GapWidget(size: 10),
                 Text(
                   "Description",
                   style: TextStyles.body2.copyWith(fontWeight: FontWeight.bold),
