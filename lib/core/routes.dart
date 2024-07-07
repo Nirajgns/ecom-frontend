@@ -3,6 +3,7 @@ import 'package:ecom_app/presentation/screens/auth/login_screen.dart';
 import 'package:ecom_app/presentation/screens/auth/providers/login_provider.dart';
 import 'package:ecom_app/presentation/screens/auth/providers/signup_provider.dart';
 import 'package:ecom_app/presentation/screens/auth/signup_screen.dart';
+import 'package:ecom_app/presentation/screens/cart/cart_screen.dart';
 import 'package:ecom_app/presentation/screens/home/home_screen.dart';
 import 'package:ecom_app/presentation/screens/product/product_details_screen.dart';
 import 'package:ecom_app/presentation/screens/splash/splash_screen.dart';
@@ -33,6 +34,9 @@ class Routes {
 
       case SplashScreen.routeName:
         return CupertinoPageRoute(builder: (context) => const SplashScreen());
+
+      case CartScreen.routeName:
+        return CupertinoPageRoute(builder: (context) => const CartScreen());
 
       case ProductDetailsScreen.routeName:
         return CupertinoPageRoute(

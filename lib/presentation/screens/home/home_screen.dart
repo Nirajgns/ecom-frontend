@@ -1,3 +1,4 @@
+import 'package:ecom_app/presentation/screens/cart/cart_screen.dart';
 import 'package:ecom_app/presentation/screens/home/category_screen.dart';
 import 'package:ecom_app/presentation/screens/home/profile_screen.dart';
 import 'package:ecom_app/presentation/screens/home/user_feed.dart';
@@ -25,10 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home screen"),
+        title: const Text("Your ecommerce store"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, CartScreen.routeName);
+            },
             icon: const Icon(CupertinoIcons.cart_fill),
           )
         ],

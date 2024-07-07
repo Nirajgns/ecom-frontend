@@ -19,60 +19,68 @@ class UserFeedScreen extends StatefulWidget {
 class _UserFeedScreenState extends State<UserFeedScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
-      if (state is ProductLoadingState && state.products.isEmpty) {
-        return const Center(child: CircularProgressIndicator());
-      }
-      if (state is ProductErrorState && state.products.isEmpty) {
-        return Center(child: Text(state.message));
-      }
-      return ListView.builder(
-        itemCount: state.products.length,
-        itemBuilder: (context, index) {
-          final product = state.products[index];
-          return CupertinoButton(
-            onPressed: () {
-              Navigator.pushNamed(context, ProductDetailsScreen.routeName,
-                  arguments: product);
-            },
-            padding: EdgeInsets.zero,
-            child: Row(
-              children: [
-                CachedNetworkImage(
-                  width: MediaQuery.of(context).size.width / 3,
-                  imageUrl: "${product.images?[0]}",
-                ),
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${product.title}",
-                        style: TextStyles.body1
-                            .copyWith(fontWeight: FontWeight.bold),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        "${product.description},",
-                        style: TextStyles.body2
-                            .copyWith(color: AppColors.textLight),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const GapWidget(),
-                      Text(Formatter.formatPrice(product.price!),
-                          style: TextStyles.heading3)
-                    ],
+    return BlocBuilder<ProductCubit, ProductState>(
+      builder: (context, state) {
+        if (state is ProductLoadingState && state.products.isEmpty) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (state is ProductErrorState && state.products.isEmpty) {
+          return Center(child: Text(state.message));
+        }
+        return ListView.builder(
+          itemCount: state.products.length,
+          itemBuilder: (context, index) {
+            final product = state.products[index];
+            return CupertinoButton(
+              onPressed: () {
+                Navigator.pushNamed(context, ProductDetailsScreen.routeName,
+                    arguments: product);
+              },
+              padding: EdgeInsets.zero,
+              child: Row(
+                children: [
+                  CachedNetworkImage(
+                    width: MediaQuery.of(context).size.width / 3,
+                    imageUrl: "${product.images?[0]}",
                   ),
-                ),
-                IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.shopping_cart))
-              ],
-            ),
-          );
-        },
-      );
-    });
+                  const GapWidget(
+                    size: 10,
+                  ),
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "${product.title}",
+                          style: TextStyles.body1
+                              .copyWith(fontWeight: FontWeight.bold),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          "${product.description},",
+                          style: TextStyles.body2
+                              .copyWith(color: AppColors.textLight),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const GapWidget(),
+                        Text(Formatter.formatPrice(product.price!),
+                            style: TextStyles.heading3)
+                      ],
+                    ),
+                  ),
+                  const GapWidget(
+                    size: 10,
+                  ),
+                  IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.shopping_cart))
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }
