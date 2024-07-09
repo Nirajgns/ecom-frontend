@@ -30,19 +30,26 @@ class Routes {
         );
 
       case HomeScreen.routeName:
-        return CupertinoPageRoute(builder: (context) => const HomeScreen());
+        return CupertinoPageRoute(
+          builder: (context) => const HomeScreen(),
+        );
 
       case SplashScreen.routeName:
-        return CupertinoPageRoute(builder: (context) => const SplashScreen());
+        return CupertinoPageRoute(
+          builder: (context) => const SplashScreen(),
+        );
 
       case CartScreen.routeName:
-        return CupertinoPageRoute(builder: (context) => const CartScreen());
+        return CupertinoPageRoute(
+          builder: (context) => const CartScreen(),
+        );
 
       case ProductDetailsScreen.routeName:
         return CupertinoPageRoute(
-            builder: (context) => ProductDetailsScreen(
-                  productModel: settings.arguments as ProductModel,
-                ));
+          builder: (context) => ProductDetailsScreen(
+            productModel: settings.arguments as ProductModel,
+          ),
+        );
 
       default:
         return null;
